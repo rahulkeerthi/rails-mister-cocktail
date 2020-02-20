@@ -1,0 +1,5 @@
+<h1><%= @cocktail.name %></h1>
+<h2><%= @cocktail.category.capitalize %></h2>
+<%= link_to "edit", edit_cocktail_path(@cocktail) %>
+<hr>
+<h3><%= @cocktail.description %></h3>
