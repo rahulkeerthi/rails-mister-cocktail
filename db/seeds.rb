@@ -19,3 +19,10 @@
 # end
 
 # DOSES
+30.times do
+  Dose.create!(description: "#{(1..10).to_a.sample} bits of", cocktail_id: (3..8).to_a.sample, ingredient_id: (1..100).to_a.sample)
+end
+
+5.times do
+  Dose.create!(description: "#{(1..10).to_a.sample} bits of", cocktail_id: 1, ingredient_id: (1..100).to_a.sample)
+end

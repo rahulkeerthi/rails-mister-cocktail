@@ -1,1 +1,8 @@
-<%= render "form", cocktail: @cocktail %>
+<div class="container">
+  <h1>Edit <%= @cocktail.name %></h1>
+  <%= render "form", cocktail: @cocktail %>
+  <hr>
+  <h2>
+    <%= link_to "Back to list", cocktails_path, class: "badge badge-primary" %>
+  </h2>
+</div>

@@ -1,0 +1,5 @@
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description, label: "How much is needed?" %>
+  <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
+  <%= f.submit %>
+<% end %>

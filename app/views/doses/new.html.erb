@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>New Ingredient</h1>
+  <%= render "form", dose: @dose %>
+  <hr>
+  <h2>
+    <%= link_to "Back to cocktail", cocktail_path(@cocktail), class: "badge badge-primary" %>
+  </h2>
+</div>

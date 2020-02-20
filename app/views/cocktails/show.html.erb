@@ -1,5 +1,32 @@
-<h1><%= @cocktail.name %></h1>
-<h2><%= @cocktail.category.capitalize %></h2>
-<%= link_to "edit", edit_cocktail_path(@cocktail) %>
-<hr>
-<h3><%= @cocktail.description %></h3>
+<div class="container">
+  <h1><%= @cocktail.name %> (<%= @cocktail.category.capitalize %>)</h1>
+  <h4><%= link_to "edit", edit_cocktail_path(@cocktail), class: "badge badge-primary" %> | <%= link_to "delete", cocktail_path(@cocktail), method: :delete, class: "badge badge-danger" %>
+  </h4>
+  <hr>
+  <h3><%= @cocktail.description %></h3>
+  <hr>
+  <div class="d-flex justify-content-between">
+    <div>
+      <ul>
+        <% @cocktail.doses.each do |dose| %>
+        <li><%= dose.description %> <%= dose.ingredient.name %> | <%= link_to "x", dose_path(dose), method: :delete  %></li>
+        <% end %>
+      </ul>
+      <p>
+        <%= link_to "add ingredient", new_cocktail_dose_path(@cocktail) %>
+      </p>
+    </div>
+    <div>
+      <h4>Add a new ingredient</h4>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description, label: "How much is needed?" %>
+        <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+  <h2>
+    <%= link_to "Back to list", cocktails_path, class: "badge badge-primary" %>
+  </h2>
+</div>

@@ -1,7 +1,21 @@
-<h1>Cocktails</h1>
+<div class="nav d-flex justify-content-between p-3 bg-warning">
+  <h1>Cocktails</h1>
+  <h3><%= link_to "Add a cocktail", new_cocktail_path, class: "badge badge-primary" %></h3>
+</div>
 
-<ul>
+<div class="container">
+  <div class = "row m-3">
   <% @cocktails.each do |cocktail| %>
-  <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+    <div class="col-3 card">
+      <%= link_to cocktail_path(cocktail) do %>
+        <%= image_tag "https://source.unsplash.com/featured/?{cocktail}", class: "card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= cocktail.name %></h5>
+        <p class="card-text"><%= cocktail.description.split(/\./).first %></p>
+        <p class=""><%= link_to "See more", cocktail_path(cocktail), class: "btn btn-primary" %></p>
+      </div>
+    </div>
   <% end %>
-</ul>
+  </div>
+</div>
