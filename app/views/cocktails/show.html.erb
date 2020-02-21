@@ -3,26 +3,24 @@
   <h4><%= link_to "edit", edit_cocktail_path(@cocktail), class: "badge badge-primary" %> | <%= link_to "delete", cocktail_path(@cocktail), method: :delete, class: "badge badge-danger" %>
   </h4>
   <hr>
-  <h3><%= @cocktail.description %></h3>
-  <hr>
   <div class="d-flex justify-content-around">
-    <div>
+    <%= cl_image_tag @cocktail.photo.key, height: 600, width: 800, crop: :limit %>
+    <div class="ml-5">
+      <h5><%= @cocktail.description %></h5>
       <ul>
         <% @cocktail.doses.each do |dose| %>
         <li><%= dose.description %> <%= dose.ingredient.name %> | <%= link_to "x", dose_path(dose), method: :delete  %></li>
         <% end %>
       </ul>
-      <p>
-        <%= link_to "add ingredient", new_cocktail_dose_path(@cocktail) %>
-      </p>
-    </div>
-    <div>
-      <h4>Add a new ingredient</h4>
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-      <%= f.input :description, label: "How much is needed?" %>
-      <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
-      <%= f.submit "Add" %>
-    <% end %>
+      <hr>
+      <div>
+        <h4>Add a new ingredient</h4>
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.input :description, label: "How much is needed?" %>
+          <%= f.association :ingredient, collection: Ingredient.all.order(:name) %>
+          <%= f.submit "Add" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <hr>

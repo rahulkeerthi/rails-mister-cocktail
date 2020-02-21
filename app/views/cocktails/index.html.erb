@@ -3,7 +3,7 @@
     <% @cocktails.each do |cocktail| %>
     <div class="grid-item card">
       <%= link_to cocktail_path(cocktail) do %>
-        <%= cocktail.photo.attached? ? cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" : image_tag "https://source.unsplash.com/featured", class: "card-img-top" %>
+        <%= cl_image_tag cocktail.photo.key, height: 300, width: 400, crop: :thumb, auto: :subject, class: "card-img-top" %>
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= cocktail.name %></h5>
