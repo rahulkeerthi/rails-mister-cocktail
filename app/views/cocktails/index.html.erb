@@ -1,12 +1,7 @@
-<div class="nav d-flex justify-content-between p-3 bg-warning">
-  <h1>Cocktails</h1>
-  <h3><%= link_to "Add a cocktail", new_cocktail_path, class: "badge badge-primary" %></h3>
-</div>
-
 <div class="container">
-  <div class = "row m-3">
-  <% @cocktails.each do |cocktail| %>
-    <div class="col-3 card">
+  <div class = "mt-3 grid-container">
+    <% @cocktails.each do |cocktail| %>
+    <div class="grid-item card">
       <%= link_to cocktail_path(cocktail) do %>
         <%= image_tag "https://source.unsplash.com/featured/?{cocktail}", class: "card-img-top" %>
       <% end %>
@@ -16,6 +11,7 @@
         <p class=""><%= link_to "See more", cocktail_path(cocktail), class: "btn btn-primary" %></p>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
+

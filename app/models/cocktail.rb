@@ -4,6 +4,6 @@ class Cocktail < ApplicationRecord
 
   CATEGORY = %w[stirred sour highball fizz].freeze
   validates :name, presence: true, uniqueness: true
-  #  validates :category##, presence: true, inclusion: { in: CATEGORY }
-  # validates :description, presence: true
+  validates :category, presence: true, inclusion: { in: CATEGORY }
+  validates :description, presence: true
 end
