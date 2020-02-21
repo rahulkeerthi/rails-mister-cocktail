@@ -2,5 +2,6 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :category, collection: %w[fizz highball sour stirred] %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>
