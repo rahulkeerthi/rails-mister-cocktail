@@ -3,6 +3,11 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
+    categories = []
+    Cocktail.all.each do |cocktail|
+      categories << cocktail.category
+    end
+    @categories = categories.uniq!
   end
 
   def show

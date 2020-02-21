@@ -6,7 +6,7 @@
   <div class="d-flex justify-content-around">
     <%= cl_image_tag @cocktail.photo.key, height: 600, width: 800, crop: :limit %>
     <div class="ml-5">
-      <h5><%= @cocktail.description %></h5>
+      <p><%= @cocktail.description %></p>
       <ul>
         <% @cocktail.doses.each do |dose| %>
         <li><%= dose.description %> <%= dose.ingredient.name %> | <%= link_to "x", dose_path(dose), method: :delete  %></li>
