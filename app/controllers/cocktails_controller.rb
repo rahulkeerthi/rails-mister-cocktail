@@ -3,9 +3,9 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
-    categories = []
+    @categories = []
     Cocktail.all.each do |cocktail|
-      categories << cocktail.category
+      @categories << cocktail.category
     end
     @categories = categories.uniq!
   end
